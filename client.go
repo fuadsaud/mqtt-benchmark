@@ -67,11 +67,13 @@ func (c *Client) Run(res chan *RunResults) {
 }
 
 func (c *Client) genMessages(ch chan *Message, done chan bool) {
+	payloadStr := "YjcJGyg09W9JCnpEXtQ6yYzs41XdXFc60UOBkBuLWD0LSjzKyBGz3KdFg7L5OOOo2r4KJU6KtJXv6ZlqCiqMu8GDK56C1OPbxPzWcQ3dcfMDpEr8K4e4oJHNEJvwH1V0JOvVlASucM0SH3uAwpiOLOpaWC7MA22IQgVfEHduJUVyeepbEnA8FYlpItwnFolx2YgtT7zlSpHK8JdMOa0cIO5XfL3oEG5SXaKdSbaBBRGeah3uXgYyXuZIE8ZlSyKgs9BCIl0Yg01dZmyYk8WibC8BQnScJIjiA2h1epJUrqSldMdgdm5cRRTMZvcQsej3algsRbOtny3lqYrUOys4iJsy1pZjIJIBsgomrvowl5Gg9T575df6O9MQ8tKpzY2KUXRts5MRBd6tr9sQ9yUb81oKlmZq0BvgRPgxMFvJ6mn79Ilz25XtFWchVuD5pOCjLM5zfyOYTrQUjFcodSGjO8gDDOIxiYoiZJ8G8o5wiTDLXoKsjoQeMVFHhxxcpcOBsB7zKXXBFnQlHHiSduate5wGRPEp5jpsaahqHV72pqO0kjStZj5m6BFnPXhD0qdJLgkOiwGn7mMzX1A1VrKwPfmt2c0w8DhWHVQdc09ytdE9qD33oThxtWZC3UIGWH347z1v1PoZiyiQQFzE2FOByRnCPzjWY88fgsSDAzKMiEUcbkTPdujHZVSCjDwpDakp9QdSHCrXKxrTrbFPIb3Se8TFR1ECNNrf4pwR7bYu4TdkYUIsQ21x9nyWsvnuVoFTgKZQKerK1gv5p5rOB4DSPIZQTKEHjiS2qUdST3EA9uZpvaielnOUk97NHIVp4I7HFmx0mLZfxP3rQOooakJN3GS2kwF4HWLnhwYGjRftT2mlOPCgflF8Mk06DrHz5kkyadlPJLCFKlKgfYTzF4ir46jGhwYSUcfKBgWLgUOqZnXtlyh7jPXGQjwApwJPxkYLvXfbca4Zke5UriGUSDxqOzr9foLUXUlN4Fs3EJPr"
+
 	for i := 0; i < c.MsgCount; i++ {
 		ch <- &Message{
 			Topic:   c.MsgTopic,
 			QoS:     c.MsgQoS,
-			Payload: make([]byte, c.MsgSize),
+			Payload: []byte(payloadStr),
 		}
 	}
 	done <- true
